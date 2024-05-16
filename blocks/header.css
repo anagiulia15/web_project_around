@@ -10,3 +10,9 @@
     height:33px;
     margin-bottom: 43px;
 }
+
+@media screen and (max-width: 880px){
+    .header {
+        width: 320px;
+    }
+}
