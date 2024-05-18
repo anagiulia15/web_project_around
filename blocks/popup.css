@@ -56,5 +56,26 @@
     display: flex;
     flex-direction: column;
     border-radius: 10px;    
+    font-family: 'Inter', Arial, Helvetica, sans-serif;
 }
 
+.popup__title {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+
+@media screen and (max-width: 880px){
+    .popup__body {
+        width: 282px;
+        box-sizing: border-box;
+    }
+
+    .popup__close {
+        right: -5px;
+    }
+
+    .popup__title {
+        font-size: 18px;
+    }
+}

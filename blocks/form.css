@@ -16,8 +16,13 @@
 
 .form__input {
     border: none;
-    border-bottom: 1px solid gray;
+    border-bottom: 1px solid #c4c4c4;
     height: 28px;
+}
+
+.form__input::placeholder{
+    font-size: 14px;
+    color: #c4c4c4;
 }
 
 .form__submit {
@@ -27,8 +32,16 @@
     height: 50px;
     color: white;
     cursor: pointer;
+    font-size: 18px;    
 }
 
 .form__submit:hover {
     opacity: .7;
+}
+
+
+@media screen and (max-width: 880px){
+    .form__submit {
+        font-size: 14px;    
+    }
 }
