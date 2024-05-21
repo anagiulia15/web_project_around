@@ -38,8 +38,10 @@ closeButtons.forEach(button => {
 
 formProfile.addEventListener('submit', (event) =>{
     event.preventDefault(); 
-    nameNode.textContent = inputNameNode.value;
-    aboutNode.textContent = inputAboutNode.value;
-    closePopups();
-    formProfile.reset();
+    if(inputNameNode.value && inputAboutNode.value){
+        nameNode.textContent = inputNameNode.value;
+        aboutNode.textContent = inputAboutNode.value;
+        closePopups();
+        formProfile.reset();
+    }    
 })
