@@ -24,64 +24,7 @@
           <button class="profile__add-button">+</button>
         </div>
       </header>
-      <main class="elements">
-        <div class="element">
-          <button class="element__trash"></button>
-          <img
-            src="images/element1.jpg"
-            alt="Foto de valle de Yosemite"
-            class="element__image"
-          />
-          <div class="element__footer">
-            <p class="element__name">Valle de Yosemite</p>
-            <button class="element__heart"></button>
-          </div>
-        </div>
-        <div class="element">
-          <button class="element__trash"></button>
-          <img
-            src="images/element2.png"
-            alt="paisaje de un Lago"
-            class="element__image"
-          />
-          <div class="element__footer">
-            <p class="element__name">Lago Louise</p>
-            <button class="element__heart"></button>
-          </div>
-        </div>
-        <div class="element">
-          <button class="element__trash"></button>
-          <img src="images/element3.png" alt="paisaje" class="element__image" />
-          <div class="element__footer">
-            <p class="element__name">Montañas Calvas</p>
-            <button class="element__heart"></button>
-          </div>
-        </div>
-        <div class="element">
-          <button class="element__trash"></button>
-          <img src="images/element4.png" alt="paisaje" class="element__image" />
-          <div class="element__footer">
-            <p class="element__name">Latemar</p>
-            <button class="element__heart"></button>
-          </div>
-        </div>
-        <div class="element">
-          <button class="element__trash"></button>
-          <img src="images/element5.png" alt="paisaje" class="element__image" />
-          <div class="element__footer">
-            <p class="element__name">Vanois National.</p>
-            <button class="element__heart"></button>
-          </div>
-        </div>
-        <div class="element">
-          <button class="element__trash"></button>
-          <img src="images/element6.png" alt="paisaje" class="element__image" />
-          <div class="element__footer">
-            <p class="element__name">Lago di Braies</p>
-            <button class="element__heart"></button>
-          </div>
-        </div>
-      </main>
+      <main class="elements"></main>
       <footer class="footer">
         <p class="footer__author">©2024 Ana Giulia Azanedo Cordova</p>
       </footer>
@@ -120,7 +63,7 @@
         <button class="popup__close"></button>
         <div class="popup__body">
           <h2 class="popup__title">Nuevo Lugar</h2>
-          <form class="form">
+          <form class="form form_element">
             <fieldset class="form__set">
               <input
                 type="text"
@@ -130,7 +73,7 @@
               />
               <input
                 type="url"
-                class="form__input form__input_about"
+                class="form__input form__input_link"
                 name="link"
                 placeholder="Enlace de la imagen"
               />
@@ -142,6 +85,33 @@
         </div>
       </div>
     </div>
+
+    <div class="popup popup_image">
+      <div class="popup__overlay"></div>
+      <div class="popup__content">
+        <button class="popup__close"></button>
+        <div class="popup__body popup__body_transparent ">
+          <img src="images/element1.jpg" alt="" class="popup__image" />
+          <h2 class="popup__subtitle"></h2>
+        </div>
+      </div>
+    </div>
+
+    <template class="template">
+      <div class="element">
+        <button class="element__trash"></button>
+        <img
+          src="images/element1.jpg"
+          alt="Foto de valle de Yosemite"
+          class="element__image"
+        />
+        <div class="element__footer">
+          <p class="element__name">Valle de Yosemite</p>
+          <button class="element__heart"></button>
+        </div>
+      </div>
+    </template>
+
     <script src="index.js"></script>
   </body>
 </html>
