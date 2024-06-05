@@ -45,6 +45,7 @@ function createElement(name, link){
     const template = document.querySelector('.template');
     const nodeElement = template.content.querySelector('.element').cloneNode(true);
     nodeElement.querySelector('.element__image').src = link;
+    nodeElement.querySelector('.element__image').alt  = `FOTO DE ${name}`;
     nodeElement.querySelector('.element__name').textContent = name;
 
     nodeElement.querySelector('.element__heart').addEventListener('click', () => {
