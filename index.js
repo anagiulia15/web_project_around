@@ -13,6 +13,7 @@ const formAddElement = document.querySelector(".form_element");
 const inputNameElementNode = formAddElement.querySelector(".form__input_name");
 const inputLinkElementNode = formAddElement.querySelector(".form__input_link");
 const elementsArea = document.querySelector('.elements');
+const overlays = document.querySelectorAll('.popup__overlay');
 
 const initialCards = [
   {
@@ -67,14 +68,22 @@ function createElement(name, link){
     return nodeElement;
 }
 
+function handleEscPress (event) {
+  if(event.key === 'Escape'){
+    closePopups();
+  }
+}
+
 function openPopup(popup) {
   popup.classList.add("popup_show");
+  document.addEventListener('keydown', handleEscPress);
 }
 
 function closePopups() {
   popupNewCard.classList.remove("popup_show");
   popupProfile.classList.remove("popup_show");
   popupImage.classList.remove("popup_show");
+  document.removeEventListener('keydown', handleEscPress);
 }
 
 editbutton.addEventListener("click", () => {
@@ -116,4 +125,10 @@ formAddElement.addEventListener('submit', (event) => {
 initialCards.forEach(item => {
     const element = createElement(item.name, item.link);
     elementsArea.append(element);
+})
+
+overlays.forEach(overlay => {
+  overlay.addEventListener('click', () => {
+    closePopups();
+  })
 })

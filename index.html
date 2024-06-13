@@ -41,14 +41,22 @@
                 type="text"
                 class="form__input form__input_name"
                 name="name"
+                minlength="2"
+                maxlength="40"
                 placeholder="Nombre"
+                required
               />
+              <span class="form__error form__error_name"></span>
               <input
                 type="text"
                 class="form__input form__input_about"
                 name="about"
+                minlength="2"
+                maxlength="200"
                 placeholder="Acerca de mi"
+                required
               />
+              <span class="form__error form__error_about"></span>
             </fieldset>
             <fieldset class="form__set">
               <input type="submit" class="form__submit" value="Guardar" />
@@ -68,15 +76,21 @@
               <input
                 type="text"
                 class="form__input form__input_name"
-                name="title"
+                name="name"
                 placeholder="Título"
+                required
+                minlength="2"
+                maxlength="30"
               />
+              <span class="form__error form__error_name"></span>
               <input
                 type="url"
+                required
                 class="form__input form__input_link"
                 name="link"
                 placeholder="Enlace de la imagen"
               />
+              <span class="form__error form__error_link"></span>
             </fieldset>
             <fieldset class="form__set">
               <input type="submit" class="form__submit" value="Guardar" />
@@ -90,7 +104,7 @@
       <div class="popup__overlay"></div>
       <div class="popup__content">
         <button class="popup__close"></button>
-        <div class="popup__body popup__body_transparent ">
+        <div class="popup__body popup__body_transparent">
           <img src="images/element1.jpg" alt="" class="popup__image" />
           <h2 class="popup__subtitle"></h2>
         </div>
@@ -113,5 +127,6 @@
     </template>
 
     <script src="index.js"></script>
+    <script src="validate.js"></script>
   </body>
 </html>
