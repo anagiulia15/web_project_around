@@ -9,8 +9,10 @@
   min-height: calc(100vh - 271px);
 }
 
+
+
 @media screen and (max-width: 880px) {
   .elements {
-    width: 320px;
+      width: 90vw;
   }
 }
