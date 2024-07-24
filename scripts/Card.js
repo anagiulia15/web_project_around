@@ -1,9 +1,10 @@
 import {template } from "./utils.js";
 export default class Card {
-  constructor(name, link, ) {
+  constructor(name, link,handleCardClick) {
     this._name = name
     this._link = link
     this._card = this.getTemplate();
+    this._handleCardClick=handleCardClick;
   }
 
   getTemplate() {
@@ -50,7 +51,7 @@ export default class Card {
     });
 
     this._cardImage.addEventListener("click", () => {
-      //openImagePopup(this._link, this._name);//ya no usar este , usar el del constructor
+    this._handleCardClick();
     });
   }  
 }
