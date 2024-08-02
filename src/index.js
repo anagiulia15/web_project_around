@@ -1,5 +1,6 @@
-import Card from "./Card.js";
-import FormValidator from "./FormValidator.js";
+import "./index.css";
+import Card from "./scripts/Card.js";
+import FormValidator from "./scripts/FormValidator.js";
 
 import {
   openPopup,
@@ -21,7 +22,8 @@ import {
   overlays,
   popupNewCard,
   popupProfile,
-} from "./utils.js";
+  openImagePopup
+} from "./scripts/utils.js";
 
 const formValidatorProfile=new FormValidator(formConfig, formProfile);
 const formValidatorAddElement=new FormValidator(formConfig, formAddElement);
@@ -57,7 +59,9 @@ formAddElement.addEventListener("submit", (event) => {
   if (inputNameElementNode.value && inputLinkElementNode.value) {
     const element = new Card(
       inputNameElementNode.value,
-      inputLinkElementNode.value
+      inputLinkElementNode.value, () => {
+        openImagePopup(item.name, item.link)
+      }
     );
     const newCard = element.generatorCard();
     elementsArea.prepend(newCard);
@@ -67,7 +71,9 @@ formAddElement.addEventListener("submit", (event) => {
 });
 
 initialCards.forEach((item) => {
-  const element = new Card(item.name, item.link);
+  const element = new Card(item.name, item.link, () => {
+    openImagePopup(item.name, item.link)
+  });
   const newCard = element.generatorCard();
   elementsArea.append(newCard);
 });

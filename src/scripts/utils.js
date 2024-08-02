@@ -45,7 +45,7 @@ export const initialCards = [
   },
 ];
 
-export function openImagePopup(link, name) {
+export function openImagePopup(name, link) {
   const imgPop = popupImage.querySelector(".popup__image");
   const imgTitle = popupImage.querySelector(".popup__subtitle");
   imgPop.src = link;
