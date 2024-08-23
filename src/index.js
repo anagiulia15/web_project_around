@@ -1,4 +1,4 @@
-import Api from "../api.js";
+
 import "./index.css";
 import Card from "./scripts/Card.js";
 import FormValidator from "./scripts/FormValidator.js";
@@ -26,8 +26,8 @@ import {
 import Userinfo from "./scripts/Userinfo.js";
 import Section from "./scripts/Section.js"
 import PopupWithForm from "./scripts/PopupWithForm.js";
-
-import api from "../api.js";
+import PopupWithImage from "./scripts/PopupwithImage.js";
+import api from "./scripts/api.js";
 
 const userInfo = new Userinfo('.profile__name', '.profile__about');
 const avatarNode = document.querySelector('.profile__avatar');
@@ -44,7 +44,17 @@ api.getUserinfo().then(user => {
     data: cards, 
     renderer: item => {
       const element = new Card(item.name, item.link, () => {
-        openImagePopup(item.name, item.link)
+       item.name,
+       item.link,
+       item,
+       currentUser,
+       ()=>{
+        popupImage.open(item.name,item.link);
+       ],
+       (cardId) =>{
+        return api.deleteCard(cardId
+        ], 
+        )
       });
       const newCard = element.generatorCard();
       section.setItem(newCard);
@@ -64,23 +74,23 @@ const popupProfile = new PopupWithForm('.popup_profile', ({name, about}) => {
 
 const popupAddCard = new PopupWithForm('.popup_card', ({name, link}) => {
   api.storeCard(name, link).then((card) => {
-    const element = new Card(item.name, item.link, () => {
-      openImagePopup(card.name, card.link)
+    const element = new Card(name, link, () => {
+      popupImage.open(item.name,item.link)   
     });
     const newCard = element.generatorCard();
-    append
+    elementsArea.prepend(newCard);
   });
 })
+const popupImage=new PopupWithImage('popupopenimage');
 
-/*
 editbutton.addEventListener("click", () => {
-  openPopup(popupProfile);
-  inputNameNode.value = nameNode.textContent;
-  inputAboutNode.value = aboutNode.textContent;
+  popupProfile.open();
 });
+formValidatorProfile.enableValidation()
+formValidatorAddElement.enableValidation()
 
 addCardButton.addEventListener("click", () => {
-  openPopup(popupNewCard);
+  popupAddCard.open();
 });
 
 closeButtons.forEach((button) => {
@@ -114,7 +124,7 @@ formAddElement.addEventListener("submit", (event) => {
     formAddElement.reset();
   }
 });
-*/
+
 /*
 initialCards.forEach((item) => {
   const element = new Card(item.name, item.link, () => {

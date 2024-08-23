@@ -1,10 +1,24 @@
 import {template } from "./utils.js";
 export default class Card {
-  constructor(name, link,handleCardClick) {
-    this._name = name
-    this._link = link
+  constructor(name, link,handleCardClick,handleDelete,handleAddLike,card,handleRemoveLike) {
+    name,
+    link,
+    cardData,
+    user,
+    handleCardClick,
+    handleDelete,
+    handleRemoveLike,
+    handleAddLike
+  } {
+    this._name = name;
+    this._link = link;
+    this._cardData=cardData;
+    this._user=user;
     this._card = this.getTemplate();
     this._handleCardClick=handleCardClick;
+    this._handleDelete=handleDelete;
+    this._handleRemoveLike=handleRemoveLike;
+    this._handleAddLike=handleAddLike;
   }
 
   getTemplate() {
@@ -20,7 +34,13 @@ export default class Card {
     this._cardImage.src = this._link;
     this._cardImage.alt = this._name;
     this._cardTitle.textContent = this._name;
+   if(this.hasCardOwner()){
+    this._btnDelete.remove();
   }
+  if(this.isLikeOwner()){
+    this._btnLike.classList.remove("element_heart_active")
+    this._card.querySelector(".element_counter").textContent=this._cardData.likes.length;
+  }}
 
   generatorCard() {
     this.getTemplate();
@@ -30,17 +50,29 @@ export default class Card {
   }
 
   handlelike() {
+    this._handleRemovelike(this._cardData._id).then((cardData)=>{
+    this._cardData=cardData;
     this._btnLike.classList.toggle("element__heart_active");
-  }
+   // this._card.querySelector('.element_counter').textContent=
+  })}
 
   handleDislike() {
-    this._btnLike.classList.remove("element__heart_active");
-  }
+    this._handleRemoveLike(this._cardData._id).then((cardData)=>{
+    this._cardData=cardData;
+    this._btnLike.classList.remove("element_heart_active");
+  })}
 
   handleDelete() {
+    this._handleDelete(this._cardData._id).then(()=>{
     this._card.remove();
+  })
   }
+  hasCardOwner(){
+return this.cardData.owner._id== this._user._id;
+}
 
+isLikeOwner() {
+  return this._cardData.likes.some(like => this._user._id);
   handleEvents() {
     this._btnLike.addEventListener("click", () => {
       this.handlelike();
