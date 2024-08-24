@@ -9,32 +9,28 @@ class Api {
       method: "GET",
       headers: {
         authorization: this._token,
-        Content_type: "application/json",
+        "Content-Type": "application/json",
       },
     }).then((response) => response.json());
   }
 
-  storeCard(name, link){
-    return fetch(`${this._url}/cards`,{
+  storeCard(name, link) {
+    return fetch(`${this._url}/cards`, {
       method: "POST",
-      headers:{
-        authorization:this._token,
-        content_type:"application/json",
-      }
-      })
-
-    
-  .then((response) => response.json());
-  
-}
-
+      headers: {
+        authorization: this._token,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({name, link})
+    }).then((response) => response.json());
+  }
 
   getUserinfo() {
     return fetch(`${this._url}/users/me`, {
       method: "GET",
       headers: {
         authorization: this._token,
-        Content_type: "application/json",
+        "Content-Type": "application/json",
       },
     }).then((response) => response.json());
   }
@@ -50,7 +46,7 @@ class Api {
         name,
         about,
       }),
-    }).then((response) => response.json());;
+    }).then((response) => response.json());
   }
   updateAvatar(avatar) {
     return fetch(`${this._url}/users/me`, {
@@ -59,12 +55,12 @@ class Api {
         authorization: this._token,
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({}),
-    }).then((response) => response.json());;
+      body: JSON.stringify({avatar}),
+    }).then((response) => response.json());
   }
 
   deleteCard(cardId) {
-    return fetch(`${this._url}/url)/${cardId}`, {
+    return fetch(`${this._url}/cards/${cardId}`, {
       method: "DELETE",
       headers: {
         authorization: this._token,

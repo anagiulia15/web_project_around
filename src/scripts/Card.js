@@ -1,28 +1,27 @@
-import {template } from "./utils.js";
 export default class Card {
-  constructor(name, link,handleCardClick,handleDelete,handleAddLike,card,handleRemoveLike) {
-    name,
-    link,
+  constructor(    
     cardData,
-    user,
+    user, 
     handleCardClick,
     handleDelete,
-    handleRemoveLike,
-    handleAddLike
-  } {
-    this._name = name;
-    this._link = link;
-    this._cardData=cardData;
-    this._user=user;
+    handleAddLike,    
+    handleRemoveLike, 
+    template
+  ) {
+    this._name = cardData.name;
+    this._link = cardData.link;
+    this._cardData = cardData;
+    this._user = user;    
+    this._handleCardClick = handleCardClick;
+    this._handleDelete = handleDelete;
+    this._handleRemoveLike = handleRemoveLike;
+    this._handleAddLike = handleAddLike;
+    this._template = document.querySelector(template);
     this._card = this.getTemplate();
-    this._handleCardClick=handleCardClick;
-    this._handleDelete=handleDelete;
-    this._handleRemoveLike=handleRemoveLike;
-    this._handleAddLike=handleAddLike;
   }
 
   getTemplate() {
-    return template.cloneNode(true).content.querySelector(".element");
+    return this._template.cloneNode(true).content.querySelector(".element");
   }
 
   setProperties() {
@@ -34,13 +33,15 @@ export default class Card {
     this._cardImage.src = this._link;
     this._cardImage.alt = this._name;
     this._cardTitle.textContent = this._name;
-   if(this.hasCardOwner()){
-    this._btnDelete.remove();
+    if (!this.hasCardOwner()) {
+      this._btnDelete.remove();
+    }    
+    if (this.isLikeOwner()) {
+      this._btnLike.classList.add("element__heart_active");      
+    }
+    this._card.querySelector(".element__counter").textContent =
+        this._cardData.likes.length;
   }
-  if(this.isLikeOwner()){
-    this._btnLike.classList.remove("element_heart_active")
-    this._card.querySelector(".element_counter").textContent=this._cardData.likes.length;
-  }}
 
   generatorCard() {
     this.getTemplate();
@@ -49,41 +50,39 @@ export default class Card {
     return this._card;
   }
 
-  handlelike() {
-    this._handleRemovelike(this._cardData._id).then((cardData)=>{
-    this._cardData=cardData;
-    this._btnLike.classList.toggle("element__heart_active");
-   // this._card.querySelector('.element_counter').textContent=
-  })}
-
-  handleDislike() {
-    this._handleRemoveLike(this._cardData._id).then((cardData)=>{
-    this._cardData=cardData;
-    this._btnLike.classList.remove("element_heart_active");
-  })}
-
-  handleDelete() {
-    this._handleDelete(this._cardData._id).then(()=>{
-    this._card.remove();
-  })
-  }
-  hasCardOwner(){
-return this.cardData.owner._id== this._user._id;
-}
-
-isLikeOwner() {
-  return this._cardData.likes.some(like => this._user._id);
   handleEvents() {
     this._btnLike.addEventListener("click", () => {
-      this.handlelike();
+      if(this.isLikeOwner()){
+        this._handleRemoveLike(this._cardData._id).then(cardData => {
+          this._cardData = cardData;
+          this._btnLike.classList.remove("element__heart_active");    
+          this._card.querySelector(".element__counter").textContent =
+          this._cardData.likes.length;          
+        });
+      }else{
+        this._handleAddLike(this._cardData._id).then(cardData => {
+          this._cardData = cardData;
+          this._btnLike.classList.add("element__heart_active");    
+          this._card.querySelector(".element__counter").textContent =
+          this._cardData.likes.length;
+        });
+      }
     });
 
     this._btnDelete.addEventListener("click", () => {
-      this.handleDelete();
+      this._handleDelete(this._cardData._id).then(() => this._card.remove());
     });
 
     this._cardImage.addEventListener("click", () => {
-    this._handleCardClick();
+      this._handleCardClick();
     });
-  }  
+  }
+
+  hasCardOwner() {
+    return this._cardData.owner._id == this._user._id;
+  }
+
+  isLikeOwner() {
+    return this._cardData.likes.some((like) => like._id === this._user._id);
+  }
 }
