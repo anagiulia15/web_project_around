@@ -6,18 +6,23 @@
     <meta name="description" content="Proyecto 8 con JS, CSS y HTML " />
 
     <meta name="keywords" content="paisajes, aplicación, blog" />
-    <title>Document</title>    
+    <title>Document</title>
   </head>
   <body>
     <div class="page">
       <header class="header">
-        <img src="<%=require('./images/logo.png') %>" alt="logotipo" class="header__logo" />
+        <img
+          src="<%=require('./images/logo.png') %>"
+          alt="logotipo"
+          class="header__logo"
+        />
         <div class="profile">
           <img
             src="<%=require('./images/image.jpg') %>"
             alt="foto del senor"
             class="profile__avatar"
           />
+          <button class="profile__edit-avatar">Lapiz</button>
           <div class="profile__info">
             <h2 class="profile__name">Jacques Cousteau</h2>
             <h3 class="profile__about">Explorador</h3>
@@ -124,6 +129,45 @@
         </div>
       </div>
     </template>
-    
+
+    <div class="popup popup_avatar">
+      <div class="popup__overlay"></div>
+      <div class="popup__content">
+        <button class="popup__close"></button>
+        <div class="popup__body">
+          <h2 class="popup__title">Actualizar Avatar</h2>
+          <form class="form form_avatar">
+            <fieldset class="form__set">
+              <input
+                type="url"
+                class="form__input form__input_avatar"
+                name="avatar"
+                required
+              />
+              <span class="form__error form__error_avatar"></span>
+            </fieldset>
+            <fieldset class="form__set">
+              <input type="submit" class="form__submit" value="Guardar" />
+            </fieldset>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <div class="popup popup_confirmation">
+      <div class="popup__overlay"></div>
+      <div class="popup__content">
+        <button class="popup__close"></button>
+        <div class="popup__body">
+          <img src="images/element1.jpg" alt="" class="popup_image" />
+          <h2 class="popup__title">¿Estas seguro?</h2>
+          <form class="form form_confirmation">
+            <fieldset class="form__set">
+              <input type="submit" class="form__submit" value="Si, Guardar" />
+            </fieldset>
+          </form>
+        </div>
+      </div>
+    </div>
   </body>
 </html>

@@ -70,7 +70,9 @@ export default class Card {
     });
 
     this._btnDelete.addEventListener("click", () => {
-      this._handleDelete(this._cardData._id).then(() => this._card.remove());
+      this._handleDelete(this._cardData._id, () =>{
+        this._card.remove()
+      })
     });
 
     this._cardImage.addEventListener("click", () => {

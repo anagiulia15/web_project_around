@@ -44,6 +44,7 @@ export const initialCards = [
     link: "https://practicum-content.s3.us-west-1.amazonaws.com/new-markets/WEB_sprint_5/ES/lago.jpg",
   },
 ];
+export const avatarButton=document.querySelector('.profile__edit-avatar')
 
 export function openImagePopup(name, link) {
   const imgPop = popupImage.querySelector(".popup__image");
