@@ -97,3 +97,18 @@
     width: 100%;
   }
 }
+.profile__avatar-container{
+  position:relative;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+} 
+.profile__edit-avatar{
+  position:absolute;
+  width:26px;
+  height:26px;
+  background-image:url(../images/editbuttom.png);
+  background-size:cover;
+  background-color:transparent;
+  border:none;
+}  
