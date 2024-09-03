@@ -13,7 +13,7 @@ import {
 import Userinfo from "./scripts/Userinfo.js";
 import Section from "./scripts/Section.js";
 import PopupWithForm from "./scripts/PopupWithForm.js";
-import PopupWithImage from "./scripts/PopupwithImage.js";
+import PopupWithImage from "./scripts/PopupWithImage.js";
 import PopupWithConfirmation from "./scripts/PopupWithConfirmation.js";
 import api from "./scripts/api.js";
 
