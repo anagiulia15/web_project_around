@@ -33,7 +33,7 @@ api
   .then((cards) => {
     section = new Section(
       {
-        data: cards,
+        data: cards.reverse(),
         renderer: (item) => {
           const element = new Card(
             item,
